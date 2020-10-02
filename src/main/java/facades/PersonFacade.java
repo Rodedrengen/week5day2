@@ -93,9 +93,11 @@ public class PersonFacade implements IPersonFacade {
         EntityManager em = emf.createEntityManager();
         TypedQuery<Person> query = em.createQuery("SELECT p FROM Person p", Person.class);
         List<Person> persons = query.getResultList();
-
+        System.out.println(persons.get(0).getFirstName());
+        
         PersonsDTO psDTO = new PersonsDTO(persons);
-
+        
+        System.out.println("navn "+psDTO.getAll().get(0).getfName());
         return psDTO;
     }
 

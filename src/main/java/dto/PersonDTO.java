@@ -8,12 +8,12 @@ package dto;
 import entities.Person;
 
 public class PersonDTO {
-    
+
     private long id;
     private String fName;
     private String lName;
     private String phone;
-    
+
     private String street;
     private String city;
     private int zip;
@@ -22,11 +22,10 @@ public class PersonDTO {
         this.fName = p.getFirstName();
         this.lName = p.getLastName();
         this.phone = p.getPhone();
-        this.id = p.getId();
-        
-        this.street = p.getAddress().getStreet(); 
-        this.city = p.getAddress().getCity();
-        this.zip = p.getAddress().getZip();
+        if (p.getId() != null) {
+            this.id = (long) p.getId();
+        } 
+
     }
 
     public String getfName() {

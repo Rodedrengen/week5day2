@@ -36,9 +36,6 @@ public class Person implements Serializable {
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date lastEdited;
     
-    @OneToOne(cascade = CascadeType.PERSIST)
-    private Address address;
-    
     public Person() {
     }
 
@@ -48,13 +45,6 @@ public class Person implements Serializable {
         this.phone = phone;
         this.created = new Date();
         this.lastEdited = new Date();
-    }
-    
-    public void setAddress(Address address) {
-        this.address = address;
-        if(address != null){
-            address.setPerson(this);
-        }
     }
     
     public String getFirstName() {
@@ -103,11 +93,4 @@ public class Person implements Serializable {
     public void setId(Integer id) {
         this.id = id;
     }
-
-    public Address getAddress() {
-        return address;
-    }
-
-    
-    
 }

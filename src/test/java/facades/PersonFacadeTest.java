@@ -62,7 +62,7 @@ public class PersonFacadeTest {
             p1 = new Person("John", "Per", "1234");
             p2 = new Person("Mikkel", "Per", "4567");
             p3 = new Person("Sune", "Per", "8901");
-            p4 = new Person("Nikolaj", "Per", "2345");
+            p4 = new Person("Simon", "Per", "2345");
 
             em.persist(p1);
             em.persist(p2);
@@ -77,6 +77,7 @@ public class PersonFacadeTest {
 
     /**
      * Test of addPerson method, of class PersonFacade.
+     * @throws exceptions.PersonNotFoundException
      */
     @Test
     public void testAddPerson() throws PersonNotFoundException {
@@ -97,13 +98,14 @@ public class PersonFacadeTest {
 
     /**
      * Test of deletePerson method, of class PersonFacade.
+     * @throws exceptions.PersonNotFoundException
      */
     @Test
     public void testDeletePerson() throws PersonNotFoundException {
         int expected = 3;
         facade.deletePerson(p1.getId());
 
-        Assertions.assertThrows(NullPointerException.class, () -> {
+        Assertions.assertThrows(PersonNotFoundException.class, () -> {
             PersonDTO pdto = facade.getPerson(p1.getId());
         });
        
@@ -114,6 +116,7 @@ public class PersonFacadeTest {
 
     /**
      * Test of getPerson method, of class PersonFacade.
+     * @throws exceptions.PersonNotFoundException
      */
     @Test
     public void testGetPerson() throws PersonNotFoundException {
